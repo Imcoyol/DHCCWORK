@@ -25,9 +25,11 @@
     {
         git log
         git log --pretty=oneline
+        git relog
     }
     当前版本回退到上一个版本
     {
+        提示：回退版本是把仓库里的刷新到本地库，不保存当前的东西
         git reset --hard HEAD^
     }
 
