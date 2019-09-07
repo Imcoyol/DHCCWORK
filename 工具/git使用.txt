@@ -1,8 +1,10 @@
 
 开始
-    在本地创建仓库
+    在本地创建仓库后第一件事
     {
-        git init
+        git config --global user.name "Your Name"
+        git config --global user.email "email@example.com"
+        git config --global core.quotepath false
     }
     第一个文件的添加
     {
@@ -11,3 +13,39 @@
         git add fileName
         git commit -m "your some tips"
     }
+    查看文件的状态
+    {
+        git diff
+    }
+    查看仓库的状态
+    {
+        git status
+    }
+    查看提交版本
+    {
+        git log
+        git log --pretty=oneline
+    }
+    当前版本回退到上一个版本
+    {
+        git reset --hard HEAD^
+    }
+
+
+知识点：
+    1
+
+    2.git status后的几种状态
+    红色modified
+    {
+        文件被修改过，还没有提交
+    }
+    绿色modified
+    {
+        文件被add了，还没有commit
+    }
+
+总结：
+    1.add和commit的区别
+
+    2.git diff 是从哪里开始比较的，本地和仓库吗？
