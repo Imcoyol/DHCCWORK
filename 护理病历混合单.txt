@@ -1,0 +1,138 @@
+
+
+{
+    资源的请求
+
+    工作业务逻辑
+
+    工作知识点
+
+    工作总结
+
+    基础知识点
+
+    基础知识总结
+}
+
+
+
+资源的请求
+	在demo中找到页面加载的csp
+		此CSP分别为两个frame
+		文件dhcnuremrpatlist.csp?&EpisodeID=#(%request.Get("EpisodeID"))#
+        {
+			代码拆析：
+			{
+				<EXTHEALTH:HEAD></EXTHEALTH:HEAD>
+                {
+                    一些基础.js的加载
+                    变量定义TRELOADPAGE，TRELOADID，TRELOADPATLIST
+                    方法定义
+                    {
+                        treload(csppage)，
+                        treloadtimeout(csppage)，
+                        tkMakeServerCall(tkclass,tkmethod)
+                    }
+                    数组定义session，t
+                }
+                d ##class(web.DHCMGNurData).PrintLinkFile()
+                {
+                    ext.js的加载
+                    多个if,没有else
+                    {
+                        1.
+                        2.
+                        3.
+                    }
+                }
+                加密变量，根据$session.key
+                {
+                    getSingleConsult，
+                    GetListConsult,
+                    ......
+                }
+			}
+            加载了一个启动js文件../scripts/nurse/DHCNUR/DHCNUREMRPATLIST.js
+            {
+                Ext.onReady()
+            }
+        }
+		文件dhcnuremrnewIP.csp?&EpisodeID=#(%request.Get("EpisodeID"))#
+        {
+            代码拆析：
+            {
+                和左边差不多
+            } 
+            加载了一个启动js文件../scripts/nurse/DHCNUR/DHCNUREMRNEWIP.js
+            {
+                Ext.onReady()
+            }
+        }
+
+工作业务逻辑
+    点击左侧已经保存的病历名称，弹出右侧病历
+    {
+        点击后，触发方法文件../scripts/nurse/DHCNUR/DHCNUREMRNEWIP.js里的方法nodeclick(node, e)
+        {
+           调用tkMakeServerCall方法，设置参数
+           调用文件cspxmlhttp.js的基础方法cspHttpServerMethod()
+           卡住了
+            。
+            。
+            。
+            。
+            。
+            。
+            。
+            。
+            。
+            。
+        }
+        
+    }
+
+
+工作知识点：
+    1.tkMakeServerCall(tkclass,tkmethod)方法调用的是cspHttpServerMethod方法
+        在<EXTHEALTH:HEAD></EXTHEALTH:HEAD>中的代码定义了tkMakeServerCall(tkclass,tkmethod)方法。
+
+工作总结
+
+
+基础知识点：
+    1.arguments
+    {
+        for (var i=2; i<tkMakeServerCall.arguments.length; i++) {
+            args[i+1]=tkMakeServerCall.arguments[i];
+        }
+        var retval=cspHttpServerMethod.apply(this,args);
+    }
+
+    2.apply(this,args)
+    {
+        function Person(name,age)  
+        {  
+            this.name=name;  
+            this.age=age;  
+        }  
+        
+        function Student(name,age,grade)  
+        {  
+            Person.apply(this,arguments);  
+            this.grade=grade;  
+        }  
+        alert("name:"+student.name+"\n"+"age:"+student.age+"\n"+"grade:"+student.grade);  
+    }
+
+    3.js函数调用参数匹配原则，外加arguments对象
+    {
+        tkMakeServerCall("NurEmr.DHCNurActiveTabs","setactivetab",session['LOGON.CTLOCID'],session['LOGON.USERID'],seltab)
+
+        for (var i=2; i<tkMakeServerCall.arguments.length; i++) {
+            args[i+1]=tkMakeServerCall.arguments[i];
+        }
+    }
+
+
+基础知识总结：
+    2.如何在一个类或者方法中，劫持其它类的属性

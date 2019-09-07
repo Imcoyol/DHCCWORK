@@ -1,0 +1,13 @@
+
+开始
+    在本地创建仓库
+    {
+        git init
+    }
+    第一个文件的添加
+    {
+        创建文件
+        编写文件
+        git add fileName
+        git commit -m "your some tips"
+    }
