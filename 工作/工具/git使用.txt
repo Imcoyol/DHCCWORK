@@ -1,6 +1,7 @@
 
 开始
-    在本地创建仓库后第一件事
+{
+    设置用户和文件名显示编码
     {
         git config --global user.name "Your Name"
         git config --global user.email "email@example.com"
@@ -25,13 +26,30 @@
     {
         git log
         git log --pretty=oneline
-        git relog
+        git reflog
     }
     当前版本回退到上一个版本
     {
         提示：回退版本是把仓库里的刷新到本地库，不保存当前的东西
         git reset --hard HEAD^
+        git reset --hard commit_id
     }
+    远程仓库
+    {
+        查看远程仓库
+        {
+            git remote -v
+        }
+        添加远程仓库
+        {
+            git remote add [shortname] [url]
+        }
+        抓取远程仓库到本地
+        {
+            git fetch [shotrname]
+        }
+    }
+}
 
 
 知识点：

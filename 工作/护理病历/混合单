@@ -1,0 +1,30 @@
+{
+    业务逻辑
+    在表中的数据
+}
+
+
+业务逻辑
+{
+    点击保存
+    {
+        主要是调用gform.items.each(eachItem1, this)，这个方法来获得数据。
+        然后调用cspRunServerMethod方法。
+    }
+}
+
+在表中的数据
+{
+    普通字段
+    {
+        SELECT * FROM Nur.DHCMoudData WHERE EmrCode = "DHCNURHHD_HUNHE"
+    }
+    列表
+    {
+        根据用户的就诊号来查护理病历的id
+        SELECT * FROM Nur.DHCNurseRecParent WHERE Adm = 152
+        根据这个id（9）来获得病人的护理病历表
+        SELECT * FROM Nur.DHCNurseRecSub WHERE RecParref = 9
+    }
+
+}

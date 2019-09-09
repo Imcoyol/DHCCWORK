@@ -1,0 +1,58 @@
+
+业务逻辑
+    页面加载顺序
+    {
+        文件websys.csp（cache基础csp）
+        {
+            提示：没看文件，只看了最终转成html的样子
+            变量session['ViewName']="TemperatureMeasureSingle";
+        }
+        文件components.js（封装组件相关配置及获取 菜单配置的组件名字的方法）
+        {
+            加载session.ViewName
+        }
+        文件TemperatureMeasureSingle.js
+        {
+            载入文件MeasureSingle.js
+        }
+        文件MeasureSingle.js
+        {
+            最终的页面
+        }
+    }
+    点击预览调用生命体征打印
+    {
+        前台
+        {
+            1.调用MeasureSingle.js中的preShow()方法
+            2.再调用websys.csp中的TempShow()方法
+            3.开始调用后台
+        }
+        后台
+        {
+            c#的体温单
+        }
+    }
+
+
+业务知识点：
+    1.temperatureChartTT.xml文件数据解析
+    <DatePr>是存放数据的
+    {
+        
+    }
+    <FIXITM>是打印出来文字的
+    {
+
+    }
+
+
+基础知识点：
+    1.操作xml的相关对象，XmlDocument，XmlElement，XmlNode
+
+    2.vs2015的对象浏览器
+
+    3.webservice
+
+
+
